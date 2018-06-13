@@ -12,7 +12,6 @@ export class TransactionServiceService {
 
   constructor(private _http: HttpClient) {
     this.url = 'https://jovs5zmau3.execute-api.eu-west-1.amazonaws.com/prod/transactions';
-    this.header = new HttpHeaders({ 'Authorization': `Basic ${btoa('code-challenge:payvisioner')}` });
   }
 
   fetchAll(): Observable<any> {
