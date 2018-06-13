@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionServiceService } from "../transaction-service.service";
+import { Transaction } from '../transaction';
 
 @Component({
   selector: 'transactions-table',
@@ -8,7 +9,7 @@ import { TransactionServiceService } from "../transaction-service.service";
 })
 export class TransactionsTableComponent implements OnInit {
 
-  response: Object;
+  response: Transaction[];
 
   constructor(private _transactions: TransactionServiceService) { }
 
@@ -17,7 +18,7 @@ export class TransactionsTableComponent implements OnInit {
   }
 
   fetchAllTransactions() {
-    return this._transactions.fetchAll().subscribe(res => this.response = res;);
+    return this._transactions.fetchAll().subscribe(res => this.response = res);
   }
 
 }
