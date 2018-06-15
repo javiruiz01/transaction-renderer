@@ -1,3 +1,29 @@
-<pre>
-    {{ response | json }}
-</pre>
+<table>
+    <thead>
+        <tr>
+            <th *ngFor="let columnName of tableHead">{{ columnName }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transaction of transactions">
+            <td>
+                {{ transaction.card.holderName }}
+            </td>
+            <td>
+                {{ transaction.brandId }}
+            </td>
+            <td>
+                {{ transaction.card.lastFourDigits }}
+            </td>
+            <td>
+                {{ transaction.action }}
+            </td>
+            <td>
+                {{ transaction.amount }}
+            </td>
+            <td>
+                {{ transaction.currencyCode }}
+            </td>
+        </tr>
+    </tbody>
+</table>
