@@ -5,13 +5,17 @@ import { AppComponent } from './app.component';
 import { AuthInterceptor } from "./auth.interceptor";
 import { TransactionsTableComponent } from './transactions-table/transactions-table.component';
 import { KeysPipe } from './keys.pipe';
+import { SearchButtonComponent } from './search-button/search-button.component';
+import { SelectOptionsComponent } from './select-options/select-options.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactionsTableComponent,
-    KeysPipe
+    KeysPipe,
+    SearchButtonComponent,
+    SelectOptionsComponent
   ],
   imports: [
     BrowserModule,
