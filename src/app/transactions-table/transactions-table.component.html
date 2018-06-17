@@ -1,29 +1,31 @@
-<table>
-    <thead>
-        <tr>
-            <th *ngFor="let columnName of tableHead">{{ columnName }}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let transaction of transactions">
-            <td>
-                {{ transaction.card.holderName }}
-            </td>
-            <td>
-                {{ transaction.brandId }}
-            </td>
-            <td>
-                {{ transaction.card.lastFourDigits }}
-            </td>
-            <td>
-                {{ transaction.action }}
-            </td>
-            <td>
-                {{ transaction.amount }}
-            </td>
-            <td>
-                {{ transaction.currencyCode }}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <table class="transactions-table">
+        <thead>
+            <tr>
+                <th class="head left" *ngFor="let columnName of tableHead">{{ columnName }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions">
+                <td class="transaction-element left">
+                    {{ transaction.card.holderName }}
+                </td>
+                <td class="transaction-element left">
+                    {{ transaction.brandId }}
+                </td>
+                <td class="transaction-element center">
+                    {{ transaction.card.lastFourDigits }}
+                </td>
+                <td class="transaction-element left">
+                    {{ transaction.action }}
+                </td>
+                <td class="transaction-element center">
+                    {{ transaction.amount }}
+                </td>
+                <td class="transaction-element left">
+                    {{ transaction.currencyCode }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
