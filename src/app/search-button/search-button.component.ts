@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Transaction } from "../transaction";
 import { TransactionService } from "../transaction-service.service";
 
 @Component({
@@ -10,12 +11,17 @@ export class SearchButtonComponent implements OnInit {
   @Input() currency: string;
   @Input() action: string;
 
+  @Output() queryTransactions: EventEmitter<Transaction[]>;
+
   constructor(private _transactions: TransactionService) {
-    this.currency = "";
-    this.action = "";
+    this.queryTransactions = new EventEmitter<Transaction[]>();
   }
 
-  search() {}
+  search(): void {
+    this._transactions.fetchOptions(this.action, this.currency).subscribe(res => {
+      this.queryTransactions.emit(res);
+    })
+  }
 
   ngOnInit() {}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Transaction } from '../transaction';
 import { TransactionService } from "../transaction-service.service";
 
@@ -9,7 +9,7 @@ import { TransactionService } from "../transaction-service.service";
 })
 export class TransactionsTableComponent implements OnInit {
   
-  transactions: Transaction[];
+  @Input() transactions: Transaction[];
   tableHead: string[];
   
   constructor(private _transactions: TransactionService) {

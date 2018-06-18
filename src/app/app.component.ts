@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Transaction } from './transaction';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   transactionOptions: Object[];
   currencyOptions: Object[];
+
+  action: string;
+  currency: string;
+
+  queryResults: Transaction[];
 
   constructor() {
     this.transactionOptions = [
@@ -20,5 +26,21 @@ export class AppComponent {
       { value: 'eur', viewValue: 'EUR' },
       { value: 'gbp', viewValue: 'GBP' }
     ];
+
+    this.currency = '';
+    this.action = '';
+  }
+
+  selectedAction(event: string): void {
+    this.action = event;
+  }
+
+  selectedCururency(event: string): void {
+    this.currency = event;
+  }
+
+  handleSearch(event: Transaction[]):void {
+    console.log(event)
+    this.queryResults = event;
   }
 }
