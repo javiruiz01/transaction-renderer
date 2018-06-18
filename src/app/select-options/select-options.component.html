@@ -1,6 +1,11 @@
-<select class="select-options">
-  <option selected disabled hidden>{{ placeholder }}</option>
-  <option *ngFor="let option of options" value="{{ option.value }}">
-    {{ option.viewValue }}
-  </option>
-</select>
+<div class="button">
+  <button (click)="handleClick($event)" class="dropdown-button">
+    {{ placeholder }}
+    <span class="caret"></span>
+  </button>
+  <div id="myDropdown" class="dropdown-content" *ngIf="showContent">
+    <a class="options" *ngFor="let option of options" (click)="handleSelection(option)">
+      {{ option.viewValue }}
+    </a>
+  </div>
+</div>

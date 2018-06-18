@@ -19,11 +19,10 @@ export class TransactionsTableComponent implements OnInit {
   ngOnInit() {
     this.fetchAllTransactions();
   }
-  
+
   fetchAllTransactions() {
     return this._transactions.fetchAll().subscribe(res => {
       this.transactions = res;
-      console.log(this.transactions)
     });
   }
   
