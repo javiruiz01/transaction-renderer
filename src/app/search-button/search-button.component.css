@@ -1,0 +1,11 @@
+.search-button {
+    color: white;
+    background-color: #8ec03f;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 2px;
+    margin: 14px 0;
+    outline: 0;
+}

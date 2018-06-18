@@ -7,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectOptionsComponent implements OnInit {
 
-  constructor() { }
+  transactionOptions: Object[];
+  currencyOptions: Object[];
+
+  constructor() {
+    this.transactionOptions = [
+      { value: 'payment', viewValue: 'Payment' },
+      { value: 'authorize', viewValue: 'Authorize' },
+      { value: 'credit', viewValue: 'Credit'}
+    ];
+    this.currencyOptions = [
+      { value: 'usd', viewValue: 'USD' },
+      { value: 'eur', viewValue: 'EUR' },
+      { value: 'gbp', viewValue: 'GBP' }
+    ]
+  }
 
   ngOnInit() {
   }
