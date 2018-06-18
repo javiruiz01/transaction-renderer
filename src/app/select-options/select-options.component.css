@@ -1,25 +1,61 @@
-.select-options {
-    -webkit-appearance: none;
-    color: #213d8f;
-    font-weight: bolder;
-    margin: 14px 14px 14px 0;
-    padding: 9px;
-    text-decoration: none;
-    outline: 0;
-    border: 1px solid #909ec7;
-}
-
-.select-options:focus {
-    border: 1px solid #1db9de;
-}
-
-.select-options option {
-    padding: 15px;
+.options {
     color: #e8ebf3;
     background-color: white;
+    display: block;
 }
 
-.select-options option:hover {
+.dropdown-button {
+    background-color: white;
+    color: #213d8f;
+    cursor: pointer;
+    margin: 13px 20px 0 0;
+    padding: 10px 20px;
+    border-radius: 2px;
+    border: 1px solid #909ec7;
+    outline: 0;
+}
+
+.dropdown-button:focus {
+    border-top: 1px solid #1db9de;
+    border-left: 1px solid #1db9de;
+    border-right: 1px solid #1db9de;
+    border-bottom: 1px solid #e8ebf3;
+    outline: 0;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.dropdown-content {
+    margin-top: -1px;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 152px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-left: 1px solid #1db9de;
+    border-right: 1px solid #1db9de;
+    border-bottom: 1px solid #1db9de;
+}
+
+.options:hover {
     color: #213d8f;
     background-color: #e8ebf3;
+}
+
+
+.options {
+    color: black;
+    padding: 12px 16px;
+    cursor: pointer;
+    display: block;
 }
