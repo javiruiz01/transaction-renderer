@@ -20,8 +20,8 @@ export class TransactionService {
 
   fetchOptions(action: string, currency: string): Observable<any> {
     let params = new HttpParams();
-    if (action) { params.set('action', action); }
-    if (currency) { params.set('currency', currency); }
+    if (action) { params = params.set('action', action); }
+    if (currency) { params = params.set('currencyCode', currency); }
     return this._http.get(this.url, { params });
   }
 }

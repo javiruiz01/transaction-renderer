@@ -22,9 +22,9 @@ export class AppComponent {
       { value: 'credit', viewValue: 'Credit'}
     ];
     this.currencyOptions = [
-      { value: 'usd', viewValue: 'USD' },
-      { value: 'eur', viewValue: 'EUR' },
-      { value: 'gbp', viewValue: 'GBP' }
+      { value: 'USD', viewValue: 'USD' },
+      { value: 'EUR', viewValue: 'EUR' },
+      { value: 'GBP', viewValue: 'GBP' }
     ];
 
     this.currency = '';
