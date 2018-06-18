@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output } from "@angular/core";
+import { EventEmitter } from "events";
+import { Option } from "../option";
 
 @Component({
   selector: "select-options",
@@ -9,19 +11,24 @@ export class SelectOptionsComponent implements OnInit {
   @Input() options: Object[];
   @Input() placeholder: string;
 
+  @Output() currency: EventEmitter;
+
   showContent: boolean;
+  selectedOption: string;
 
   constructor() {
     this.placeholder = "";
     this.showContent = false;
+    this.currency = new EventEmitter();
   }
 
   handleClick(event) {
     this.showContent = !this.showContent;
   }
 
-  handleSelection(option: Object) {
-    console.log(option)
+  handleSelection(option: Option) {
+    this.showContent = !this.showContent;
+    this.selectedOption = option.viewValue;
   }
 
   ngOnInit() {

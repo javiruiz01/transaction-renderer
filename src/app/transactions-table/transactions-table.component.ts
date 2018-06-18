@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../transaction';
-import { TransactionServiceService } from "../transaction-service.service";
+import { TransactionService } from "../transaction-service.service";
 
 @Component({
   selector: 'transactions-table',
@@ -12,7 +12,7 @@ export class TransactionsTableComponent implements OnInit {
   transactions: Transaction[];
   tableHead: string[];
   
-  constructor(private _transactions: TransactionServiceService) {
+  constructor(private _transactions: TransactionService) {
     this.tableHead = ['Name', 'Brand', 'Last 4 digits', 'Transaction type', 'Amount', 'Currency'];
   }
   
