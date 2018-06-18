@@ -1,0 +1,25 @@
+.select-options {
+    -webkit-appearance: none;
+    color: #213d8f;
+    font-weight: bolder;
+    margin: 14px 14px 14px 0;
+    padding: 9px;
+    text-decoration: none;
+    outline: 0;
+    border: 1px solid #909ec7;
+}
+
+.select-options:focus {
+    border: 1px solid #1db9de;
+}
+
+.select-options option {
+    padding: 15px;
+    color: #e8ebf3;
+    background-color: white;
+}
+
+.select-options option:hover {
+    color: #213d8f;
+    background-color: #e8ebf3;
+}

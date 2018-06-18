@@ -1,6 +1,8 @@
 <div class="container">
     <div class="wrapper">
         <div class="buttons">
+            <select-options [options]="transactionOptions" [placeholder]="'Transaction type'"></select-options>
+            <select-options [options]="currencyOptions" [placeholder]="'Currency'"></select-options>
             <search-button></search-button>
         </div>
         <transactions-table></transactions-table>
