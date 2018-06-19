@@ -4,10 +4,10 @@
             <th class="head left" *ngFor="let columnName of tableHead">{{ columnName }}</th>
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let transaction of transactions"> 
+    <tbody *ngFor="let transaction of transactions; let i = index;">
+        <tr> 
             <td class="transaction-element left">
-                <a data-toggle="collapse" href="#collapse">{{ transaction.card.holderName }}</a>
+                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.card.holderName }}</a>
             </td>
             <td class="transaction-element left">
                 <a>{{ cardBrands[transaction.brandId] ? cardBrands[transaction.brandId] : transaction.brandId }}</a>
@@ -25,6 +25,10 @@
                 <a>{{ transaction.currencyCode }}</a>
             </td>
         </tr>
-        
+        <tr class="collapse" id="collapse-{{ i }}" [ngClass]="{'show': selected === '#collapse-' + i }">
+            <div>
+                <p>holita que tal soy {{ i }}</p>
+            </div>
+        </tr>
     </tbody>
 </table>
