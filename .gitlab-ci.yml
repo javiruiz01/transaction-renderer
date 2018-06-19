@@ -1,0 +1,22 @@
+stages:
+  - build
+  - test
+  - deploy
+
+building-application:
+  stage: build
+  image: node:latest
+  script: 
+    - echo 'Building app...'
+
+testing-application:
+  stage: test
+  image: node:latest
+  script:
+    - echo 'Testing app...'
+
+deploying-application:
+  stage: deploy
+  image: node:latest
+  script:
+    - echo 'Deploying app...'

@@ -12,7 +12,9 @@ export class TransactionsTableComponent implements OnInit {
   @Input() transactions: Transaction[];
   tableHead: string[];
 
+  show: boolean;
   cardBrands: Object;
+  selected: string;
   
   constructor(private _transactions: TransactionService) {
     this.tableHead = ['Name', 'Brand', 'Last 4 digits', 'Transaction type', 'Amount', 'Currency'];
@@ -21,6 +23,7 @@ export class TransactionsTableComponent implements OnInit {
       1020: 'MasterCard',
       1010: 'VISA'
     };
+    this.show = false;
   }
   
   ngOnInit() {
@@ -31,6 +34,15 @@ export class TransactionsTableComponent implements OnInit {
     return this._transactions.fetchAll().subscribe(res => {
       this.transactions = res;
     });
+  }
+
+  showCollapsible(href) {
+    if (this.selected === href && this.show) {
+      this.show = false;
+    } else {
+      this.selected = href;
+      this.show = true;
+    }
   }
   
 }
