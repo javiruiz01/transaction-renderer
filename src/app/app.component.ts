@@ -39,7 +39,6 @@ export class AppComponent {
   }
 
   handleSearch(event: Transaction[]):void {
-    console.log(event)
     this.queryResults = event;
   }
 }
