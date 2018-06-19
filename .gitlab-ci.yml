@@ -7,7 +7,8 @@ building-application:
   stage: build
   image: node:latest
   script: 
-    - echo 'Building app...'
+    - npm install -g @angular/cli
+    - ng build --prod
 
 testing-application:
   stage: test
@@ -18,5 +19,7 @@ testing-application:
 deploying-application:
   stage: deploy
   image: node:latest
+  only:
+    - master
   script:
     - echo 'Deploying app...'
