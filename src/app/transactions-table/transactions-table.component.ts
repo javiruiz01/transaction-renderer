@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Transaction } from '../transaction';
-import { TransactionServiceService } from "../transaction-service.service";
+import { TransactionService } from "../transaction-service.service";
 
 @Component({
   selector: 'transactions-table',
@@ -9,11 +9,18 @@ import { TransactionServiceService } from "../transaction-service.service";
 })
 export class TransactionsTableComponent implements OnInit {
   
-  transactions: Transaction[];
+  @Input() transactions: Transaction[];
   tableHead: string[];
+
+  cardBrands: Object;
   
-  constructor(private _transactions: TransactionServiceService) {
+  constructor(private _transactions: TransactionService) {
     this.tableHead = ['Name', 'Brand', 'Last 4 digits', 'Transaction type', 'Amount', 'Currency'];
+    this.cardBrands = {
+      1060: 'Diners Club',
+      1020: 'MasterCard',
+      1010: 'VISA'
+    };
   }
   
   ngOnInit() {

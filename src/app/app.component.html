@@ -1,11 +1,10 @@
 <div class="container">
     <div class="wrapper">
         <div class="buttons">
-            <select-options [options]="transactionOptions" [placeholder]="'Transaction type'"></select-options>
-            <select-options [options]="currencyOptions" [placeholder]="'Currency'"></select-options>
-            <search-button></search-button>
+            <select-options (selected)="selectedAction($event)" [options]="transactionOptions" [placeholder]="'Transaction type'"></select-options>
+            <select-options (selected)="selectedCururency($event)" [options]="currencyOptions" [placeholder]="'Currency'"></select-options>
+            <search-button (queryTransactions)="handleSearch($event)" [currency]="currency" [action]="action"></search-button>
         </div>
-        <transactions-table></transactions-table>
+        <transactions-table [transactions]="queryResults"></transactions-table>
     </div>
-
 </div>
