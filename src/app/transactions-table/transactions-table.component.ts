@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Transaction } from '../transaction';
 import { TransactionService } from "../transaction-service.service";
 
@@ -7,7 +7,7 @@ import { TransactionService } from "../transaction-service.service";
   templateUrl: './transactions-table.component.html',
   styleUrls: ['./transactions-table.component.css']
 })
-export class TransactionsTableComponent implements OnInit {
+export class TransactionsTableComponent {
   
   @Input() transactions: Transaction[];
   tableHead: string[];
@@ -25,16 +25,6 @@ export class TransactionsTableComponent implements OnInit {
     };
     this.show = false;
   }
-  
-  ngOnInit() {
-    this.fetchAllTransactions();
-  }
-
-  fetchAllTransactions() {
-    return this._transactions.fetchAll().subscribe(res => {
-      this.transactions = res;
-    });
-  }
 
   showCollapsible(href) {
     if (this.selected === href && this.show) {
@@ -44,5 +34,4 @@ export class TransactionsTableComponent implements OnInit {
       this.show = true;
     }
   }
-  
 }

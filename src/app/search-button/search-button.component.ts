@@ -13,12 +13,17 @@ export class SearchButtonComponent implements OnInit {
 
   @Output() queryTransactions: EventEmitter<Transaction[]>;
 
+  loading: boolean;
+
   constructor(private _transactions: TransactionService) {
     this.queryTransactions = new EventEmitter<Transaction[]>();
+    this.loading = false;
   }
 
   search(): void {
+    this.loading = true;
     this._transactions.fetchOptions(this.action, this.currency).subscribe(res => {
+      this.loading = false;
       this.queryTransactions.emit(res);
     })
   }
