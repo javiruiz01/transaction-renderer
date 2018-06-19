@@ -19,8 +19,8 @@
     text-align: left;
 }
 
-.center {
-    text-align: center;
+.right {
+    text-align: right;
 }
 
 th, td {
@@ -29,4 +29,9 @@ th, td {
 
 tr:last-child {
     border-bottom: 0;
+}
+
+.collapse {
+    display: none;
+    height: 0;
 }

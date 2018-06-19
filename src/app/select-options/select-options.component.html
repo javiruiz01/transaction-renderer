@@ -1,6 +1,6 @@
 <div class="button">
   <button (click)="handleClick($event)" class="dropdown-button">
-    {{ placeholder }}
+    {{ selectedOption ? selectedOption : placeholder }}
     <span class="caret"></span>
   </button>
   <div id="myDropdown" class="dropdown-content" *ngIf="showContent">
