@@ -37,8 +37,12 @@ export class TransactionsTableComponent implements OnInit {
   }
 
   showCollapsible(href) {
-    console.log(href)
-    this.selected = href;
+    if (this.selected === href && this.show) {
+      this.show = false;
+    } else {
+      this.selected = href;
+      this.show = true;
+    }
   }
   
 }

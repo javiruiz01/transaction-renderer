@@ -10,33 +10,45 @@
                 <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.card.holderName }}</a>
             </td>
             <td class="transaction-element left">
-                <a>{{ cardBrands[transaction.brandId] ? cardBrands[transaction.brandId] : transaction.brandId }}</a>
+                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ cardBrands[transaction.brandId] ? cardBrands[transaction.brandId] : transaction.brandId }}</a>
             </td>
             <td class="transaction-element right">
-                <a>XXXX {{ transaction.card.lastFourDigits }}</a>
+                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">XXXX {{ transaction.card.lastFourDigits }}</a>
             </td>
             <td class="transaction-element left">
-                <a>{{ transaction.action }}</a>
+                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.action | titlecase }}</a>
             </td>
             <td class="transaction-element right">
-                <a>{{ transaction.amount }},00</a>
+                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.amount }},00</a>
             </td>
             <td class="transaction-element left">
-                <a>{{ transaction.currencyCode }}</a>
+                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.currencyCode }}</a>
             </td>
         </tr>
-        <tr class="collapse" id="collapse-{{ i }}" [ngClass]="{'show': selected === '#collapse-' + i }">
+        <tr class="collapse" id="collapse-{{ i }}" [ngClass]="{'show': (selected === '#collapse-' + i) && show }">
             <td colspan="6">
                 <div class="details">
                     <div class="left-column">
-                        <pre>{{ transaction.id }}</pre>
-                        <pre>{{ transaction.trackingCode }}</pre>
-                        <pre>{{ transaction.brandId }}</pre>
+                        <p class="detail">ID:
+                            <span class="detail-data">{{ transaction.id }}</span>
+                        </p>
+                        <p class="detail">Tracking code:
+                            <span class="detail-data">{{ transaction.trackingCode }}</span>
+                        </p>
+                        <p class="detail">Brand ID:
+                            <span class="detail-data">{{ transaction.brandId }}</span>
+                        </p>
                     </div>
                     <div class="right-column">
-                        <pre>{{ transaction.card.firstSixDigits }}</pre>
-                        <pre>{{ transaction.card.expiryMonth }}</pre>
-                        <pre>{{ transaction.card.expiryYear }}</pre>
+                        <p class="detail">First 6 digits:
+                            <span class="detail-data">{{ transaction.card.firstSixDigits }}</span>
+                        </p>
+                        <p class="detail">Expiry month:
+                            <span class="detail-data">{{ transaction.card.expiryMonth }}</span>
+                        </p>
+                        <p class="detail">Expiry year:
+                            <span class="detail-data">{{ transaction.card.expiryYear }}</span>
+                        </p>
                     </div>
                 </div>
             </td>
