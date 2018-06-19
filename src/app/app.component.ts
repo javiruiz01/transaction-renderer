@@ -18,7 +18,6 @@ export class AppComponent {
   constructor() {
     this.transactionOptions = [
       { value: 'payment', viewValue: 'Payment' },
-      { value: 'authorize', viewValue: 'Authorize' },
       { value: 'credit', viewValue: 'Credit'}
     ];
     this.currencyOptions = [

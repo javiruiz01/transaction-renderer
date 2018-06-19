@@ -11,9 +11,16 @@ export class TransactionsTableComponent implements OnInit {
   
   @Input() transactions: Transaction[];
   tableHead: string[];
+
+  cardBrands: Object;
   
   constructor(private _transactions: TransactionService) {
     this.tableHead = ['Name', 'Brand', 'Last 4 digits', 'Transaction type', 'Amount', 'Currency'];
+    this.cardBrands = {
+      1060: 'Diners Club',
+      1020: 'MasterCard',
+      1010: 'VISA'
+    };
   }
   
   ngOnInit() {

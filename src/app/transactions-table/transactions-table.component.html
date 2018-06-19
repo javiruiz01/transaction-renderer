@@ -5,25 +5,26 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let transaction of transactions">
+        <tr *ngFor="let transaction of transactions"> 
             <td class="transaction-element left">
-                {{ transaction.card.holderName }}
-            </td>
-            <td class="transaction-element left">
-                {{ transaction.brandId }}
-            </td>
-            <td class="transaction-element center">
-                XXXX {{ transaction.card.lastFourDigits }}
+                <a data-toggle="collapse" href="#collapse">{{ transaction.card.holderName }}</a>
             </td>
             <td class="transaction-element left">
-                {{ transaction.action }}
+                <a>{{ cardBrands[transaction.brandId] ? cardBrands[transaction.brandId] : transaction.brandId }}</a>
             </td>
-            <td class="transaction-element center">
-                {{ transaction.amount }}
+            <td class="transaction-element right">
+                <a>XXXX {{ transaction.card.lastFourDigits }}</a>
             </td>
             <td class="transaction-element left">
-                {{ transaction.currencyCode }}
+                <a>{{ transaction.action }}</a>
+            </td>
+            <td class="transaction-element right">
+                <a>{{ transaction.amount }}</a>
+            </td>
+            <td class="transaction-element left">
+                <a>{{ transaction.currencyCode }}</a>
             </td>
         </tr>
+        
     </tbody>
 </table>
