@@ -5,7 +5,7 @@
         </tr>
     </thead>
     <tbody *ngFor="let transaction of transactions; let i = index;">
-        <tr> 
+        <tr>
             <td class="transaction-element left">
                 <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.card.holderName }}</a>
             </td>
@@ -19,16 +19,27 @@
                 <a>{{ transaction.action }}</a>
             </td>
             <td class="transaction-element right">
-                <a>{{ transaction.amount }}</a>
+                <a>{{ transaction.amount }},00</a>
             </td>
             <td class="transaction-element left">
                 <a>{{ transaction.currencyCode }}</a>
             </td>
         </tr>
         <tr class="collapse" id="collapse-{{ i }}" [ngClass]="{'show': selected === '#collapse-' + i }">
-            <div>
-                <p>holita que tal soy {{ i }}</p>
-            </div>
+            <td colspan="6">
+                <div class="details">
+                    <div class="left-column">
+                        <pre>{{ transaction.id }}</pre>
+                        <pre>{{ transaction.trackingCode }}</pre>
+                        <pre>{{ transaction.brandId }}</pre>
+                    </div>
+                    <div class="right-column">
+                        <pre>{{ transaction.card.firstSixDigits }}</pre>
+                        <pre>{{ transaction.card.expiryMonth }}</pre>
+                        <pre>{{ transaction.card.expiryYear }}</pre>
+                    </div>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>
