@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Transaction } from './transaction';
+import { TransactionService } from "./transaction-service.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   transactionOptions: Object[];
   currencyOptions: Object[];
 
   action: string;
   currency: string;
 
-  queryResults: Transaction[];
+  transactions: Transaction[];
 
-  constructor() {
+  constructor(private _transactions: TransactionService) {
     this.transactionOptions = [
       { value: 'payment', viewValue: 'Payment' },
       { value: 'credit', viewValue: 'Credit'}
@@ -30,6 +31,16 @@ export class AppComponent {
     this.action = '';
   }
 
+  ngOnInit() {
+    this.fetchAllTransactions();
+  }
+
+  fetchAllTransactions(): void {
+    this._transactions.fetchAll().subscribe(res => {
+      this.transactions = res;
+    });
+  }
+
   selectedAction(event: string): void {
     this.action = event;
   }
@@ -38,7 +49,7 @@ export class AppComponent {
     this.currency = event;
   }
 
-  handleSearch(event: Transaction[]):void {
-    this.queryResults = event;
+  handleSearch(event: Transaction[]): void {
+    this.transactions = event;
   }
 }
