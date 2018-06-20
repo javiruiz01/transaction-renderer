@@ -3,12 +3,14 @@ stages:
   - test
   - deploy
 
+before_script:
+  - npm install -g @angular/cli
+  - npm install
+
 building-application:
   stage: build
   image: node:latest
   script: 
-    - npm install -g @angular/cli
-    - npm install
     - ng build --prod
 
 testing-application:
@@ -22,6 +24,5 @@ deploying-application:
   image: node:latest
   script:
     - npm install -g firebase-tools
-    - npm install -g @angular/cli
     - ng build --prod
     - firebase deploy --token $FIREBASE_TOKEN
