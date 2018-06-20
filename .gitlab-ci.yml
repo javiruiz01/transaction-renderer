@@ -17,7 +17,7 @@ testing-application:
   stage: test
   image: node:latest
   script:
-    - ng test
+    - ng test --browsers PhantomJS --watch=false
 
 deploying-application:
   stage: deploy
