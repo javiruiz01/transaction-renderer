@@ -5,13 +5,17 @@ stages:
   - test
   - deploy
 
+cache:
+  paths:
+    - node_modules/
+
 before_script:
   - npm install -g @angular/cli
-  - npm install
 
 building-application:
   stage: build
   script: 
+    - npm install
     - ng build --prod
 
 testing-application:
