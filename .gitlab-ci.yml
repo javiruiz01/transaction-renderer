@@ -7,16 +7,12 @@ stages:
 
 before_script:
   - npm install -g @angular/cli
+  - npm install
 
 building-application:
   stage: build
   script: 
-    - npm install
     - ng build --prod
-  cache:
-    paths:
-      - dist/
-      - node_modules/
 
 testing-application:
   stage: test
@@ -27,4 +23,5 @@ deploying-application:
   stage: deploy
   script:
     - npm install -g firebase-tools
+    - ng build --prod
     - firebase deploy --token $FIREBASE_TOKEN
