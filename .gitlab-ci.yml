@@ -33,7 +33,7 @@ deploy-application:
     - echo "Deploying to Firebase"
     - firebase deploy --token $FIREBASE_TOKEN
   only:
-    - /^feature\/*
+    - /^feature\/*$/
 
 deploy-prod:
   stage: production
