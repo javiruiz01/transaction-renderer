@@ -15,26 +15,46 @@ export class SearchButtonComponent implements OnInit {
   @Output() queryTransactions: EventEmitter<Transaction[]>;
 
   loading: boolean;
+  error: string;
 
   constructor(private _transactions: TransactionService) {
     this.queryTransactions = new EventEmitter<Transaction[]>();
     this.loading = false;
+    this.error = "#8ec03f";
   }
 
   search(): void {
     this.toggleLoading();
     if (!this.currency && !this.action) {
-      this._transactions.fetchAll().subscribe(res => {
-        this.queryTransactions.emit(res);
-      })
+      this._transactions.fetchAll().subscribe(
+        res => {
+          this.error = "#8ec03f";
+          this.toggleLoading();
+          this.queryTransactions.emit(res);
+        },
+        error => {
+          this.error = "#F44336";
+          this.toggleLoading();
+          console.error("Oh no! un error", error);
+        }
+      );
+    } else {
+      this._transactions.fetchOptions(this.action, this.currency).subscribe(
+        res => {
+          this.error = "#8ec03f";
+          this.toggleLoading();
+          this.queryTransactions.emit(res);
+        },
+        error => {
+          this.error = "#F44336";
+          this.toggleLoading();
+          console.error("Oh no! un error", error);
+        }
+      );
     }
-    this._transactions.fetchOptions(this.action, this.currency).subscribe(res => {
-      this.toggleLoading();
-      this.queryTransactions.emit(res);
-    });
   }
 
-  toggleLoading():void {
+  toggleLoading(): void {
     this.loading = !this.loading;
   }
 

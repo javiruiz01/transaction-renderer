@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Transaction } from './transaction';
+import { Component, OnInit } from "@angular/core";
+import { Transaction } from "./transaction";
 import { TransactionService } from "./transaction-service.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   transactionOptions: Object[];
   currencyOptions: Object[];
 
@@ -18,17 +18,18 @@ export class AppComponent implements OnInit{
 
   constructor(private _transactions: TransactionService) {
     this.transactionOptions = [
-      { value: 'payment', viewValue: 'Payment' },
-      { value: 'credit', viewValue: 'Credit'}
+      { value: "payment", viewValue: "Payment" },
+      { value: "credit", viewValue: "Credit" },
+      { value: "refund", viewValue: "Refund (Error)" }
     ];
     this.currencyOptions = [
-      { value: 'USD', viewValue: 'USD' },
-      { value: 'EUR', viewValue: 'EUR' },
-      { value: 'GBP', viewValue: 'GBP' }
+      { value: "USD", viewValue: "USD" },
+      { value: "EUR", viewValue: "EUR" },
+      { value: "GBP", viewValue: "GBP" }
     ];
 
-    this.currency = '';
-    this.action = '';
+    this.currency = "";
+    this.action = "";
   }
 
   ngOnInit() {
