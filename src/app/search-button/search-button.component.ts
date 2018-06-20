@@ -25,7 +25,7 @@ export class SearchButtonComponent implements OnInit {
     this._transactions.fetchOptions(this.action, this.currency).subscribe(res => {
       this.loading = false;
       this.queryTransactions.emit(res);
-    })
+    });
   }
 
   ngOnInit() {}

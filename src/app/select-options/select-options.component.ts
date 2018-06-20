@@ -21,11 +21,11 @@ export class SelectOptionsComponent {
     this.selected = new EventEmitter<string>();
   }
 
-  handleClick(event) {
+  handleClick(event): void {
     this.showContent = !this.showContent;
   }
 
-  handleSelection(option: Option) {
+  handleSelection(option: Option): void {
     this.showContent = !this.showContent;
     this.selectedOption = option.viewValue;
     this.selected.emit(option.value);

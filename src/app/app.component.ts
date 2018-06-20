@@ -49,7 +49,7 @@ export class AppComponent implements OnInit{
     this.currency = event;
   }
 
-  handleSearch(event: Transaction[]):void {
+  handleSearch(event: Transaction[]): void {
     this.transactions = event;
   }
 }

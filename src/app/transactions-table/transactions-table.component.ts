@@ -26,7 +26,7 @@ export class TransactionsTableComponent {
     this.show = false;
   }
 
-  showCollapsible(href) {
+  showCollapsible(href: string): void {
     if (this.selected === href && this.show) {
       this.show = false;
     } else {
