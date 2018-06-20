@@ -52,4 +52,8 @@ export class AppComponent implements OnInit{
   handleSearch(event: Transaction[]): void {
     this.transactions = event;
   }
+
+  handleResetFilters(event: Transaction[]): void {
+    this.transactions = event;
+  }
 }

@@ -1,4 +1,4 @@
 <button class="search-button" type="button" (click)="search()" [ngClass]="{ 'disabled': loading }">
-  <span *ngIf="!loading">Search</span>
+  <span *ngIf="!loading">{{ text }}</span>
   <div class="loader" *ngIf="loading"></div>
 </button>

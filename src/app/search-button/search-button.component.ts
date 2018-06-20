@@ -10,6 +10,7 @@ import { TransactionService } from "../transaction-service.service";
 export class SearchButtonComponent implements OnInit {
   @Input() currency: string;
   @Input() action: string;
+  @Input() text: string;
 
   @Output() queryTransactions: EventEmitter<Transaction[]>;
 
@@ -21,9 +22,14 @@ export class SearchButtonComponent implements OnInit {
   }
 
   search(): void {
-    this.toggleLoading()
+    this.toggleLoading();
+    if (!this.currency && !this.action) {
+      this._transactions.fetchAll().subscribe(res => {
+        this.queryTransactions.emit(res);
+      })
+    }
     this._transactions.fetchOptions(this.action, this.currency).subscribe(res => {
-      this.toggleLoading()
+      this.toggleLoading();
       this.queryTransactions.emit(res);
     });
   }

@@ -24,10 +24,10 @@ describe('TransactionsTableComponent', () => {
   });
 
   it('should select row selected', () => {
-    const transactionTable = new TransactionsTableComponent();
-    expect(transactionTable.show).toBe(false, 'off at first');
-    transactionTable.showCollapsible('#collapsible-0');
-    expect(transactionTable.show).toBe(true, 'on after click');
-    expect(transactionTable.selected).toBe('#collapsible-0', 'element selected is element clicked');
+    component = new TransactionsTableComponent();
+    expect(component.show).toBe(false, 'off at first');
+    component.showCollapsible('#collapsible-0');
+    expect(component.show).toBe(true, 'on after click');
+    expect(component.selected).toBe('#collapsible-0', 'element selected is element clicked');
   });
 });
