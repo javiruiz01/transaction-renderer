@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from "@angular/core";
 import { Option } from "../option";
 
 @Component({
@@ -12,10 +12,14 @@ export class SelectOptionsComponent {
 
   @Output() selected: EventEmitter<string>;
 
+  @HostListener('document:click', ['$event']) clickOut(event) {
+    if (!this._ref.nativeElement.contains(event.target)) { this.showContent = false; }
+  }
+
   showContent: boolean;
   selectedOption: string; 
 
-  constructor() {
+  constructor(private _ref: ElementRef) {
     this.placeholder = "";
     this.showContent = false;
     this.selected = new EventEmitter<string>();

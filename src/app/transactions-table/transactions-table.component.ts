@@ -10,8 +10,8 @@ import { TransactionService } from "../transaction-service.service";
 export class TransactionsTableComponent {
   
   @Input() transactions: Transaction[];
-  tableHead: string[];
 
+  tableHead: string[];
   show: boolean;
   cardBrands: Object;
   selected: string;

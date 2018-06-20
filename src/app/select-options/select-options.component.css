@@ -5,6 +5,7 @@
 }
 
 .dropdown-button {
+    width: 165px;
     background-color: white;
     color: #213d8f;
     cursor: pointer;
@@ -37,6 +38,7 @@
 }
 
 .dropdown-content {
+    width: 163px;
     margin-top: -1px;
     position: absolute;
     background-color: #f1f1f1;
