@@ -37,9 +37,14 @@ export class AppComponent implements OnInit {
   }
 
   fetchAllTransactions(): void {
-    this._transactions.fetchAll().subscribe(res => {
-      this.transactions = res;
-    });
+    this._transactions.fetchAll().subscribe(
+      res => {
+        this.transactions = res;
+      },
+      err => {
+        console.log('Picnic error!', this.transactions)
+      }
+    );
   }
 
   selectedAction(event: string): void {
