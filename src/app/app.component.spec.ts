@@ -21,16 +21,6 @@ describe("AppComponent", () => {
     ]);
   }));
 
-  it(`should have 'currencyOptions'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.transactionOptions).toEqual([
-      { value: 'USD', viewValue: 'USD' },
-      { value: 'EUR', viewValue: 'EUR' },
-      { value: 'GBP', viewValue: 'GBP' }
-    ]);
-  }));
-
   it("should render title in a h1 tag", async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
