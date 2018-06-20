@@ -17,7 +17,7 @@ testing-application:
   stage: test
   image: node:latest
   script:
-    - echo 'Testing app...'
+    - ng test
 
 deploying-application:
   stage: deploy

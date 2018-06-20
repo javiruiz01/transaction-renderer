@@ -1,6 +1,7 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TransactionsTableComponent } from './transactions-table.component';
+
 
 describe('TransactionsTableComponent', () => {
   let component: TransactionsTableComponent;
@@ -8,7 +9,8 @@ describe('TransactionsTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TransactionsTableComponent ]
+      declarations: [ TransactionsTableComponent ],
+      providers: [ HttpClient, HttpHandler ]
     })
     .compileComponents();
   }));

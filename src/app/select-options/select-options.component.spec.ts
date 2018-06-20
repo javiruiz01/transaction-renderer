@@ -1,6 +1,7 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SelectOptionsComponent } from './select-options.component';
+
 
 describe('SelectOptionsComponent', () => {
   let component: SelectOptionsComponent;
@@ -8,7 +9,8 @@ describe('SelectOptionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectOptionsComponent ]
+      declarations: [ SelectOptionsComponent ],
+      providers: [ HttpClient, HttpHandler ]
     })
     .compileComponents();
   }));

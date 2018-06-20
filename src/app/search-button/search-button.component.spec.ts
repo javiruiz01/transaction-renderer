@@ -1,6 +1,7 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SearchButtonComponent } from './search-button.component';
+
 
 describe('SearchButtonComponent', () => {
   let component: SearchButtonComponent;
@@ -8,7 +9,8 @@ describe('SearchButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchButtonComponent ]
+      declarations: [ SearchButtonComponent ],
+      providers: [ HttpClient, HttpHandler ]
     })
     .compileComponents();
   }));
