@@ -1,22 +1,28 @@
+image: node:latest
+ 
 stages:
   - build
   - test
   - deploy
 
+before_script:
+  - npm install
+  - npm install -g @angular/cli
+
 building-application:
   stage: build
-  image: node:latest
   script: 
-    - echo 'Building app...'
+    - npm install
+    - ng build --prod
 
 testing-application:
   stage: test
-  image: node:latest
   script:
-    - echo 'Testing app...'
+    - ng test --browsers PhantomJS --watch=false
 
 deploying-application:
   stage: deploy
-  image: node:latest
   script:
-    - echo 'Deploying app...'
+    - npm install -g firebase-tools
+    - ng build --prod
+    - firebase deploy --token $FIREBASE_TOKEN

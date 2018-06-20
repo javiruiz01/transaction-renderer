@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from "@angular/core";
 import { Option } from "../option";
 
 @Component({
@@ -7,25 +7,29 @@ import { Option } from "../option";
   styleUrls: ["./select-options.component.css"]
 })
 export class SelectOptionsComponent {
-  @Input() options: Object[];
+  @Input() options: Option[];
   @Input() placeholder: string;
 
   @Output() selected: EventEmitter<string>;
 
+  @HostListener('document:click', ['$event']) clickOut(event) {
+    if (!this._ref.nativeElement.contains(event.target)) { this.showContent = false; }
+  }
+
   showContent: boolean;
   selectedOption: string; 
 
-  constructor() {
+  constructor(private _ref: ElementRef) {
     this.placeholder = "";
     this.showContent = false;
     this.selected = new EventEmitter<string>();
   }
 
-  handleClick(event) {
+  handleClick(event): void {
     this.showContent = !this.showContent;
   }
 
-  handleSelection(option: Option) {
+  handleSelection(option: Option): void {
     this.showContent = !this.showContent;
     this.selectedOption = option.viewValue;
     this.selected.emit(option.value);

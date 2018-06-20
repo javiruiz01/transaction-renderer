@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>TransactionRenderer</title>
@@ -9,7 +10,14 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
 </head>
+
 <body>
   <app-root></app-root>
+  <script>
+    if (global === undefined) {
+      var global = window;
+    }
+  </script>
 </body>
+
 </html>
