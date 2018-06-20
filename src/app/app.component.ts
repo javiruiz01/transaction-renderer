@@ -38,6 +38,7 @@ export class AppComponent implements OnInit{
   fetchAllTransactions(): void {
     this._transactions.fetchAll().subscribe(res => {
       this.transactions = res;
+      console.log(this.transactions)
     });
   }
 

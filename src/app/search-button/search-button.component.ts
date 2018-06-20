@@ -21,11 +21,15 @@ export class SearchButtonComponent implements OnInit {
   }
 
   search(): void {
-    this.loading = true;
+    this.toggleLoading()
     this._transactions.fetchOptions(this.action, this.currency).subscribe(res => {
-      this.loading = false;
+      this.toggleLoading()
       this.queryTransactions.emit(res);
     });
+  }
+
+  toggleLoading():void {
+    this.loading = !this.loading;
   }
 
   ngOnInit() {}

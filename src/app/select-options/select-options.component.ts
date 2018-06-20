@@ -7,7 +7,7 @@ import { Option } from "../option";
   styleUrls: ["./select-options.component.css"]
 })
 export class SelectOptionsComponent {
-  @Input() options: Object[];
+  @Input() options: Option[];
   @Input() placeholder: string;
 
   @Output() selected: EventEmitter<string>;

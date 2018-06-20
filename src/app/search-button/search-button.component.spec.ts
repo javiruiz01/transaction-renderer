@@ -1,18 +1,16 @@
-import { HttpClient, HttpHandler } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { SearchButtonComponent } from './search-button.component';
+import { HttpClient, HttpHandler } from "@angular/common/http";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { SearchButtonComponent } from "./search-button.component";
 
-
-describe('SearchButtonComponent', () => {
+describe("SearchButtonComponent", () => {
   let component: SearchButtonComponent;
   let fixture: ComponentFixture<SearchButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchButtonComponent ],
-      providers: [ HttpClient, HttpHandler ]
-    })
-    .compileComponents();
+      declarations: [SearchButtonComponent],
+      providers: [HttpClient, HttpHandler]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,7 +19,13 @@ describe('SearchButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should show spinner when loading", () => {
+    expect(component.loading).toBe(false, "off at first");
+    component.toggleLoading();
+    expect(component.loading).toBe(true, "loading while searching");
   });
 });

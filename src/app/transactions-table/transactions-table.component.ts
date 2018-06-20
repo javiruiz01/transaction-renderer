@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Transaction } from '../transaction';
-import { TransactionService } from "../transaction-service.service";
 
 @Component({
   selector: 'transactions-table',
@@ -16,7 +15,7 @@ export class TransactionsTableComponent {
   cardBrands: Object;
   selected: string;
   
-  constructor(private _transactions: TransactionService) {
+  constructor() {
     this.tableHead = ['Name', 'Brand', 'Last 4 digits', 'Transaction type', 'Amount', 'Currency'];
     this.cardBrands = {
       1060: 'Diners Club',
