@@ -1,4 +1,6 @@
 .search-button {
+    width: 90px;
+    height: 35px;
     color: white;
     background-color: #8ec03f;
     border: none;
@@ -9,4 +11,34 @@
     margin: 14px 0;
     outline: 0;
     font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    top: calc(50% - 1rem);
+    left: calc(50% - 1rem);
+    width: 10px;
+    height: 10px;
+    border: 0.25rem solid #213d8f;
+    border-bottom: 0.25rem solid rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    z-index: 9999;
+}
+
+.loader--hidden {
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.disabled {
+    pointer-events: none;
 }

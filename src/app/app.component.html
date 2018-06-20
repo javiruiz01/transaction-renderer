@@ -5,6 +5,6 @@
             <select-options (selected)="selectedCururency($event)" [options]="currencyOptions" [placeholder]="'Currency'"></select-options>
             <search-button (queryTransactions)="handleSearch($event)" [currency]="currency" [action]="action"></search-button>
         </div>
-        <transactions-table [transactions]="queryResults"></transactions-table>
+        <transactions-table [transactions]="transactions"></transactions-table>
     </div>
 </div>
