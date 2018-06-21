@@ -4,25 +4,25 @@
             <th class="head left" *ngFor="let columnName of tableHead">{{ columnName }}</th>
         </tr>
     </thead>
-    <tbody *ngFor="let transaction of transactions; let i = index;">
+    <tbody *ngFor="let transaction of transactions; let i = index;" id="#collapse-{{ i }}" (click)="showCollapsible($event.path[2].id)">
         <tr>
             <td class="transaction-element left">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.card.holderName }}</a>
+                {{ transaction.card.holderName }}
             </td>
             <td class="transaction-element left">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ cardBrands[transaction.brandId] ? cardBrands[transaction.brandId] : transaction.brandId }}</a>
+                {{ cardBrands[transaction.brandId] ? cardBrands[transaction.brandId] : transaction.brandId }}
             </td>
             <td class="transaction-element right">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">XXXX {{ transaction.card.lastFourDigits }}</a>
+                XXXX {{ transaction.card.lastFourDigits }}
             </td>
             <td class="transaction-element left">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.action | titlecase }}</a>
+                {{ transaction.action | titlecase }}
             </td>
             <td class="transaction-element right">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.amount }},00</a>
+                {{ transaction.amount }},00
             </td>
             <td class="transaction-element left">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.currencyCode }}</a>
+                {{ transaction.currencyCode }}
             </td>
         </tr> 
         <tr class="collapse" [ngClass]="{'show': (selected === '#collapse-' + i) && show }">

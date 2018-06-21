@@ -25,11 +25,11 @@ export class TransactionsTableComponent {
     this.show = false;
   }
 
-  showCollapsible(href: string): void {
-    if (this.selected === href && this.show) {
+  showCollapsible(id: string): void {
+    if (this.selected === id && this.show) {
       this.show = false;
     } else {
-      this.selected = href;
+      this.selected = id;
       this.show = true;
     }
   }
