@@ -5,7 +5,7 @@
         </tr>
     </thead>
     <tbody *ngFor="let transaction of transactions; let i = index;" id="#collapse-{{ i }}" (click)="showCollapsible($event.path[2].id)">
-        <tr>
+        <tr class="tr-collapsible">
             <td class="transaction-element left">
                 {{ transaction.card.holderName }}
             </td>
@@ -19,7 +19,7 @@
                 {{ transaction.action | titlecase }}
             </td>
             <td class="transaction-element right">
-                {{ transaction.amount }},00
+                {{ transaction.amount | number:'.2' }}
             </td>
             <td class="transaction-element left">
                 {{ transaction.currencyCode }}
@@ -41,7 +41,7 @@
                     </div>
                     <div class="right-column">
                         <p class="detail">First 6 digits:
-                            <span class="detail-data">{{ transaction.card.firstSixDigits }}</span>
+                            <span class="detail-data">{{ transaction.card.firstSixDigits }} XXXX</span>
                         </p>
                         <p class="detail">Expiry month:
                             <span class="detail-data">{{ transaction.card.expiryMonth }}</span>
