@@ -22,13 +22,22 @@ describe("AuthInterceptor", () => {
     httpMock = TestBed.get(HttpTestingController);
   });
 
-  //   it("should add an Authorization header", () => {
-  //     expect(service.url).toEqual(url, 'same url');
-  //     service.fetchAll().subscribe(res => {
-  //       expect(res).toBeTruthy();
-  //     });
+  //   describe("make http calls", () => {
+  //     it("should add Authorization header", inject(
+  //       [HttpClient, HttpTestingController],
+  //       (http: HttpClient, httpMock: HttpTestingController) => {
+  //         http.get(url).subscribe(res => {
+  //           expect(res).toBeTruthy();
+  //         });
+  //         // const req = httpMock.expectOne(r => r.headers.has("Authorization"));
+  //         //   expect(service.url).toEqual(url, "same url");
+  //         //   service.fetchAll().subscribe(res => {
+  //         //     expect(res).toBeTruthy();
+  //         //   });
 
-  //     const httpRequest = httpMock.expectOne(url);
-  //     expect(httpRequest.request.headers.has("Authorization"));
+  //         // const httpRequest = httpMock.expectOne(url);
+  //         // expect(httpRequest.request.headers.has("Authorization"));
+  //       }
+  //     ));
   //   });
 });

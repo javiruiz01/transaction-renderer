@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Transaction } from "../transaction";
 import { TransactionService } from "../transaction-service.service";
 
@@ -7,7 +7,7 @@ import { TransactionService } from "../transaction-service.service";
   templateUrl: "./search-button.component.html",
   styleUrls: ["./search-button.component.css"]
 })
-export class SearchButtonComponent implements OnInit {
+export class SearchButtonComponent {
   @Input() currency: string;
   @Input() action: string;
   @Input() text: string;
@@ -57,6 +57,4 @@ export class SearchButtonComponent implements OnInit {
   toggleLoading(): void {
     this.loading = !this.loading;
   }
-
-  ngOnInit() {}
 }

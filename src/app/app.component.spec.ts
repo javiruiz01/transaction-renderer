@@ -15,8 +15,8 @@ describe("AppComponent", () => {
       declarations: [
         AppComponent,
         SelectOptionsComponent,
-        SearchButtonComponent,
-        TransactionsTableComponent
+        TransactionsTableComponent,
+        SearchButtonComponent
       ],
       providers: [HttpClient, HttpHandler, TransactionService]
     }).compileComponents();
