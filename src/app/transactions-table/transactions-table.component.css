@@ -7,6 +7,10 @@ a:visited {
     color: #4a4a4a;
 }
 
+.tr-collapsible {
+    cursor: pointer;
+}
+
 .transactions-table {
     background-color: white;
     border-spacing: 0;
@@ -75,8 +79,8 @@ tr:last-child {
     flex-direction: column;
     padding: 15px;
     margin: 15px;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .detail {
@@ -85,4 +89,17 @@ tr:last-child {
 
 .detail-data {
     color: #4a4a4a;
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-message {
+    padding: 2px 4px;
+    color: #c0341d;
+    background-color: #fbe5e1;
+    border-radius: 3px;
 }

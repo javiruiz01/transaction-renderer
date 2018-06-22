@@ -1,21 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Transaction } from '../transaction';
+import { TransactionService } from '../transaction-service.service';
 
 @Component({
   selector: 'transactions-table',
   templateUrl: './transactions-table.component.html',
   styleUrls: ['./transactions-table.component.css']
 })
-export class TransactionsTableComponent {
-  
+export class TransactionsTableComponent implements OnInit {
+
   @Input() transactions: Transaction[];
 
   tableHead: string[];
   show: boolean;
   cardBrands: Object;
   selected: string;
-  
-  constructor() {
+  showError: boolean;
+
+  constructor(private _transactions: TransactionService) {
     this.tableHead = ['Name', 'Brand', 'Last 4 digits', 'Transaction type', 'Amount', 'Currency'];
     this.cardBrands = {
       1060: 'Diners Club',
@@ -23,13 +25,31 @@ export class TransactionsTableComponent {
       1010: 'VISA'
     };
     this.show = false;
+    this.showError = false;
   }
 
-  showCollapsible(href: string): void {
-    if (this.selected === href && this.show) {
+  ngOnInit() {
+    this.fetchAllTransactions();
+  }
+
+  fetchAllTransactions(): void {
+    this._transactions.fetchAll().subscribe(
+      res => {
+        this.transactions = res;
+        this.showError = false;
+      },
+      err => {
+        console.log('Picnic error!', this.transactions);
+        this.showError = true;
+      }
+    );
+  }
+
+  showCollapsible(id: string): void {
+    if (this.selected === id && this.show) {
       this.show = false;
     } else {
-      this.selected = href;
+      this.selected = id;
       this.show = true;
     }
   }

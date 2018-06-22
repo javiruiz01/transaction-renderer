@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Transaction } from './transaction';
-import { TransactionService } from "./transaction-service.service";
+import { Component } from "@angular/core";
+import { Transaction } from "./transaction";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   transactionOptions: Object[];
   currencyOptions: Object[];
 
@@ -16,29 +15,20 @@ export class AppComponent implements OnInit{
 
   transactions: Transaction[];
 
-  constructor(private _transactions: TransactionService) {
+  constructor() {
     this.transactionOptions = [
-      { value: 'payment', viewValue: 'Payment' },
-      { value: 'credit', viewValue: 'Credit'}
+      { value: "payment", viewValue: "Payment" },
+      { value: "credit", viewValue: "Credit" },
+      { value: "refund", viewValue: "Refund (Error)" }
     ];
     this.currencyOptions = [
-      { value: 'USD', viewValue: 'USD' },
-      { value: 'EUR', viewValue: 'EUR' },
-      { value: 'GBP', viewValue: 'GBP' }
+      { value: "USD", viewValue: "USD" },
+      { value: "EUR", viewValue: "EUR" },
+      { value: "GBP", viewValue: "GBP" }
     ];
 
-    this.currency = '';
-    this.action = '';
-  }
-
-  ngOnInit() {
-    this.fetchAllTransactions();
-  }
-
-  fetchAllTransactions(): void {
-    this._transactions.fetchAll().subscribe(res => {
-      this.transactions = res;
-    });
+    this.currency = "";
+    this.action = "";
   }
 
   selectedAction(event: string): void {
@@ -50,6 +40,10 @@ export class AppComponent implements OnInit{
   }
 
   handleSearch(event: Transaction[]): void {
+    this.transactions = event;
+  }
+
+  handleResetFilters(event: Transaction[]): void {
     this.transactions = event;
   }
 }
