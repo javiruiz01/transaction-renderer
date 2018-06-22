@@ -1,5 +1,5 @@
 image: node:latest
- 
+
 stages:
   - build
   - test
@@ -10,12 +10,16 @@ before_script:
   - npm install
   - npm install -g @angular/cli
 
+cache:
+  paths:
+    - node_modules/
+
 build-application:
   stage: build
   artifacts:
     paths:
       - dist/
-  script: 
+  script:
     - npm install
     - ng build --prod
 

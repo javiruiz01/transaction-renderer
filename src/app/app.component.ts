@@ -1,13 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Transaction } from "./transaction";
-import { TransactionService } from "./transaction-service.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   transactionOptions: Object[];
   currencyOptions: Object[];
 
@@ -16,7 +15,7 @@ export class AppComponent implements OnInit {
 
   transactions: Transaction[];
 
-  constructor(private _transactions: TransactionService) {
+  constructor() {
     this.transactionOptions = [
       { value: "payment", viewValue: "Payment" },
       { value: "credit", viewValue: "Credit" },
@@ -30,21 +29,6 @@ export class AppComponent implements OnInit {
 
     this.currency = "";
     this.action = "";
-  }
-
-  ngOnInit() {
-    this.fetchAllTransactions();
-  }
-
-  fetchAllTransactions(): void {
-    this._transactions.fetchAll().subscribe(
-      res => {
-        this.transactions = res;
-      },
-      err => {
-        console.log('Picnic error!', this.transactions)
-      }
-    );
   }
 
   selectedAction(event: string): void {

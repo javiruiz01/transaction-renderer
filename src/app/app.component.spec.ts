@@ -1,18 +1,33 @@
-import { async, TestBed } from "@angular/core/testing";
+import { HttpClient, HttpHandler } from "@angular/common/http";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
+import { SearchButtonComponent } from "./search-button/search-button.component";
+import { SelectOptionsComponent } from "./select-options/select-options.component";
+import { TransactionsTableComponent } from "./transactions-table/transactions-table.component";
+
 describe("AppComponent", () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent]
+      declarations: [
+        AppComponent,
+        SelectOptionsComponent,
+        SearchButtonComponent,
+        TransactionsTableComponent
+      ],
+      providers: [HttpClient, HttpHandler]
     }).compileComponents();
   }));
-  /* it("should create the app", async(() => {
+
+  it("should create the app", async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
-  it(`should have 'transactionOptions'`, async(() => {
+  /* it(`should have 'transactionOptions'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.transactionOptions).toEqual([
