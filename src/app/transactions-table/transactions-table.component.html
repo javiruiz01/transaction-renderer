@@ -1,31 +1,46 @@
-<table class="transactions-table">
+<table class="transactions-table" *ngIf="!transactions && showError">
     <thead>
         <tr>
             <th class="head left" *ngFor="let columnName of tableHead">{{ columnName }}</th>
         </tr>
     </thead>
-    <tbody *ngFor="let transaction of transactions; let i = index;">
+    <tr>
+        <td colspan="6">
+            <div class="error">
+                <p class="error-message">Something went wrong on our end, please try again later</p>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<table class="transactions-table" *ngIf="transactions && !showError">
+    <thead>
         <tr>
+            <th class="head left" *ngFor="let columnName of tableHead">{{ columnName }}</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let transaction of transactions; let i = index;" id="#collapse-{{ i }}" (click)="showCollapsible($event.path[2].id)">
+        <tr class="tr-collapsible">
             <td class="transaction-element left">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.card.holderName }}</a>
+                {{ transaction.card.holderName }}
             </td>
             <td class="transaction-element left">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ cardBrands[transaction.brandId] ? cardBrands[transaction.brandId] : transaction.brandId }}</a>
+                {{ cardBrands[transaction.brandId] ? cardBrands[transaction.brandId] : transaction.brandId }}
             </td>
             <td class="transaction-element right">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">XXXX {{ transaction.card.lastFourDigits }}</a>
+                XXXX {{ transaction.card.lastFourDigits }}
             </td>
             <td class="transaction-element left">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.action | titlecase }}</a>
+                {{ transaction.action | titlecase }}
             </td>
             <td class="transaction-element right">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.amount }},00</a>
+                {{ transaction.amount | number:'.2' }}
             </td>
             <td class="transaction-element left">
-                <a href="#collapse-{{ i }}" role="button" (click)="showCollapsible($event.target.hash)">{{ transaction.currencyCode }}</a>
+                {{ transaction.currencyCode }}
             </td>
         </tr>
-        <tr class="collapse" id="collapse-{{ i }}" [ngClass]="{'show': (selected === '#collapse-' + i) && show }">
+        <tr class="collapse" [ngClass]="{'show': (selected === '#collapse-' + i) && show }">
             <td colspan="6">
                 <div class="details">
                     <div class="left-column">
@@ -41,7 +56,7 @@
                     </div>
                     <div class="right-column">
                         <p class="detail">First 6 digits:
-                            <span class="detail-data">{{ transaction.card.firstSixDigits }}</span>
+                            <span class="detail-data">{{ transaction.card.firstSixDigits }} XXXX</span>
                         </p>
                         <p class="detail">Expiry month:
                             <span class="detail-data">{{ transaction.card.expiryMonth }}</span>

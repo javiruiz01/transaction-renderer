@@ -3,7 +3,8 @@
         <div class="buttons">
             <select-options (selected)="selectedAction($event)" [options]="transactionOptions" [placeholder]="'Transaction type'"></select-options>
             <select-options (selected)="selectedCururency($event)" [options]="currencyOptions" [placeholder]="'Currency'"></select-options>
-            <search-button (queryTransactions)="handleSearch($event)" [currency]="currency" [action]="action"></search-button>
+            <search-button (queryTransactions)="handleSearch($event)" [currency]="currency" [action]="action" [text]="'Search'"></search-button>
+            <search-button class="reset-filter-button" (queryTransactions)="handleResetFilters($event)" [text]="'Reset filters'"></search-button>
         </div>
         <transactions-table [transactions]="transactions"></transactions-table>
     </div>

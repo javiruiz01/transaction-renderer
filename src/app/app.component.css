@@ -18,3 +18,7 @@
 .buttons {
     display: flex;
 }
+
+.reset-filter-button {
+    padding-left: 20px;
+}
