@@ -90,3 +90,16 @@ tr:last-child {
 .detail-data {
     color: #4a4a4a;
 }
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-message {
+    padding: 2px 4px;
+    color: #c0341d;
+    background-color: #fbe5e1;
+    border-radius: 3px;
+}

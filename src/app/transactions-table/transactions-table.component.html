@@ -1,4 +1,19 @@
-<table class="transactions-table">
+<table class="transactions-table" *ngIf="!transactions">
+    <thead>
+        <tr>
+            <th class="head left" *ngFor="let columnName of tableHead">{{ columnName }}</th>
+        </tr>
+    </thead>
+    <tr>
+        <td colspan="6">
+            <div class="error">
+                <p class="error-message">Something went wrong on our end, please try again later</p>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<table class="transactions-table" *ngIf="transactions">
     <thead>
         <tr>
             <th class="head left" *ngFor="let columnName of tableHead">{{ columnName }}</th>
