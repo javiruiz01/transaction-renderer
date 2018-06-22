@@ -15,6 +15,7 @@ export class TransactionsTableComponent implements OnInit {
   show: boolean;
   cardBrands: Object;
   selected: string;
+  showError: boolean;
 
   constructor(private _transactions: TransactionService) {
     this.tableHead = ['Name', 'Brand', 'Last 4 digits', 'Transaction type', 'Amount', 'Currency'];
@@ -24,6 +25,7 @@ export class TransactionsTableComponent implements OnInit {
       1010: 'VISA'
     };
     this.show = false;
+    this.showError = false;
   }
 
   ngOnInit() {
@@ -34,9 +36,11 @@ export class TransactionsTableComponent implements OnInit {
     this._transactions.fetchAll().subscribe(
       res => {
         this.transactions = res;
+        this.showError = false;
       },
       err => {
-        console.log('Picnic error!', this.transactions)
+        console.log('Picnic error!', this.transactions);
+        this.showError = true;
       }
     );
   }

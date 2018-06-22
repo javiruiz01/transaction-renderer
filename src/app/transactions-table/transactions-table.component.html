@@ -1,4 +1,4 @@
-<table class="transactions-table" *ngIf="!transactions">
+<table class="transactions-table" *ngIf="!transactions && showError">
     <thead>
         <tr>
             <th class="head left" *ngFor="let columnName of tableHead">{{ columnName }}</th>
@@ -13,7 +13,7 @@
     </tr>
 </table>
 
-<table class="transactions-table" *ngIf="transactions">
+<table class="transactions-table" *ngIf="transactions && !showError">
     <thead>
         <tr>
             <th class="head left" *ngFor="let columnName of tableHead">{{ columnName }}</th>

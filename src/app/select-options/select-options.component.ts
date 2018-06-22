@@ -17,7 +17,7 @@ export class SelectOptionsComponent {
   }
 
   showContent: boolean;
-  selectedOption: string; 
+  selectedOption: string;
 
   constructor(private _ref: ElementRef) {
     this.placeholder = "";
