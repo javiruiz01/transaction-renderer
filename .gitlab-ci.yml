@@ -40,9 +40,10 @@ deploy-application:
 
 deploy-prod:
   stage: production
+  image: python:latest
   dependencies:
     - build-application
   script:
+    - pip install awscli
     - echo "Deploying to fancy AWS server"
-  only:
-    - master
+    - aws s3 cp ./dist $AWS_BUCKET --recursive --acl public-read
